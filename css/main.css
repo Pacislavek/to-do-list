@@ -21,6 +21,7 @@ button:focus {
 .main-title {
   font-family: 'Poppins', sans-serif;
   padding: 5vh 0;
+  text-align: center;
 }
 
 .card-deck {
@@ -32,7 +33,17 @@ button:focus {
   width: 100%;
   padding: 10px 10px;
   position: relative;
-  box-shadow: 0px 0px 12px rgba(0,0,0,0.4);
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
+  margin-bottom: 25px !important;
+}
+
+.finished {
+  filter: contrast(60%);
+  transition: all 0.2s ease-in-out;
+}
+
+.finished:hover {
+  filter: none;
 }
 
 .card-close {
@@ -67,16 +78,30 @@ button:focus {
   height: 30px;
   color: white;
   line-height: 30px;
+  border-radius: 50%;
+  transition: all 0.3s ease-in;
+}
+
+.card-icon:hover {
+  filter: brightness(100%);
 }
 
 .undone {
-  background-color: darkred;
+  background-color: rgba(0, 0, 0, 0.4);
   position: relative;
 }
 
-.undone:before {
+.undone:after {
   content: '';
-
+  position: absolute;
+  top: 6px;
+  left: 9px;
+  width: 18px;
+  height: 18px;
+  background-image: url(../img/times-solid.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  filter: invert(100%);
 }
 
 .done {
@@ -100,6 +125,12 @@ button:focus {
 .card-date {
   font-family: 'Roboto', sans-serif;
   color: rgba(0, 0, 0, 0.3);
+  align-self: flex-end;
+}
+
+.finished .card-date {
+  font-family: 'Roboto', sans-serif;
+  color: rgba(0, 0, 0, 0.5);
   align-self: flex-end;
 }
 
@@ -136,4 +167,96 @@ button:focus {
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   transition: all 0.3s ease-in;
+}
+
+/*CREATE NEW CARD WINDOW*/
+
+#create-card {
+  position: fixed;
+  display: none;
+  top: 0px;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(0,0,0,0.3);
+  width: 100vw;
+  height: 100vh;
+}
+
+.note-create {
+  position: relative;
+  background-color: #404040;
+  padding: 20px 40px;
+  border-radius: 20px;
+  width: 60%;
+  margin-top: 20px;
+  box-shadow: 0px 2px 12px rgba(0,0,0,0.6);
+}
+
+.create-close {
+  position: absolute;
+  top: 0;
+  right: 15px;
+  font-size: 33px;
+  transition: all 0.3s ease-in;
+}
+
+.create-close:hover {
+  cursor: pointer;
+}
+
+.create-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5em;
+}
+
+.create-desc {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2em;
+}
+
+.create-label {
+  color: rgba(255, 255, 255, 0.7);
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.create-input {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 4px 8px;
+  color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 20px;
+}
+
+.create-textarea {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 5px 8px;
+  color: rgba(0, 0, 0, 0.6);
+  height: 30px;
+  width: 380px;
+  min-height: 30px;
+  max-height: 200px;
+  max-width: 70%;
+  min-width: 30%;
+  resize: both;
+  margin-bottom: 20px;
+}
+
+.create-date {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 4px 8px;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.create-button {
+  border: 0px solid rgba(0,0,0,0.2);
+  outline: none;
+  background-color: #fffffa;
+  color: black;
+  margin-left: 10px;
+  padding: 4px 12px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.create-button:hover {
+  transform: scale(110%);
 }
