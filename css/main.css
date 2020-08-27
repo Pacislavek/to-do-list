@@ -13,15 +13,29 @@ button:focus {
 }
 
 #main {
-  background-color: #303030;
+  position: relative;
+  background: url(../img/projects-bg.jpg);
+  background-size: cover;
   min-height: 100vh;
   width: 100%;
 }
 
+#main:before {
+  position: absolute;
+  content: '';
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.85);
+}
+
 .main-title {
+  color: rgba(255,255,255,0.9);
   font-family: 'Poppins', sans-serif;
   padding: 5vh 0;
   text-align: center;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+  z-index: 1;
 }
 
 .card-deck {
@@ -35,6 +49,7 @@ button:focus {
   position: relative;
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
   margin-bottom: 25px !important;
+  order: 2
 }
 
 .finished {
@@ -69,7 +84,10 @@ button:focus {
   color: #202020;
 }
 
-.card-footer {}
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+}
 
 .card-icon {
   outline: none;
@@ -142,8 +160,10 @@ button:focus {
   justify-content: center;
   align-items: center;
   transition: all 0.3s ease-in;
+  background-color: rgba(255, 255, 255, 0.0);
   width: 100%;
-  height: 100%;
+  padding: 50px 0;
+  border-radius: 8px;
 }
 
 .add-card:hover {
@@ -156,12 +176,8 @@ button:focus {
 }
 
 .add-card:before {
-  content: '+';
+  content: '';
   position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   width: 100px;
   min-height: 100px;
   background-color: rgba(255, 255, 255, 0.2);
@@ -179,6 +195,7 @@ button:focus {
   background-color: rgba(0,0,0,0.3);
   width: 100vw;
   height: 100vh;
+  z-index: 99;
 }
 
 .note-create {
@@ -211,6 +228,13 @@ button:focus {
 .create-desc {
   font-family: 'Poppins', sans-serif;
   font-size: 1.2em;
+  margin-bottom: 25px;
+}
+
+.create-form {
+  display: flex;
+  justify-content: center;
+  flex-flow: wrap;
 }
 
 .create-label {
@@ -221,10 +245,12 @@ button:focus {
 }
 
 .create-input {
+  display: block;
   border: 1px solid rgba(0, 0, 0, 0.2);
   padding: 4px 8px;
   color: rgba(0, 0, 0, 0.8);
   margin-bottom: 20px;
+  width: 50%;
 }
 
 .create-textarea {
@@ -232,28 +258,30 @@ button:focus {
   padding: 5px 8px;
   color: rgba(0, 0, 0, 0.6);
   height: 30px;
-  width: 380px;
+  width: 320px;
   min-height: 30px;
   max-height: 200px;
-  max-width: 70%;
-  min-width: 30%;
+  max-width: 400px;
+  min-width: 300px;
   resize: both;
   margin-bottom: 20px;
 }
 
 .create-date {
+  display: block;
   border: 1px solid rgba(0, 0, 0, 0.2);
   padding: 4px 8px;
   color: rgba(0, 0, 0, 0.8);
 }
 
 .create-button {
+  margin-top: 35px;
   border: 0px solid rgba(0,0,0,0.2);
   outline: none;
   background-color: #fffffa;
   color: black;
-  margin-left: 10px;
-  padding: 4px 12px;
+  padding: 6px 16px;
+  width: 35%;
   font-family: 'Poppins', sans-serif;
 }
 
