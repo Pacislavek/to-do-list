@@ -24,8 +24,6 @@ function addTask() {
   var noteTitle = document.getElementById("noteTitle");
   var noteDesc = document.getElementById("noteDesc");
 
-  console.log("Dodaję zadanie do listy")
-
   //element container bootstrap
   const bootstrapCont = document.createElement("div");
   bootstrapCont.classList.add("col-lg-4", "col-md-6", "col-sm-12");
@@ -94,7 +92,6 @@ todoForm.addEventListener("submit", function (e) {
   addTask();
 
   //refresh ↓
-
   //deleteTaskRefresh
   deleteTask = document.querySelectorAll(".card-close");
   deleteTask.forEach(obj => {
