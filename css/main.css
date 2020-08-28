@@ -15,7 +15,7 @@ button:focus {
 #main {
   position: relative;
   background: url(../img/projects-bg.jpg);
-  background-size: cover;
+  background-attachment: fixed;
   min-height: 100vh;
   width: 100%;
 }
