@@ -2,6 +2,7 @@ var createCard = document.getElementById("create-card");
 
 function showCreate() {
   createCard.style.display = "block";
+  document.getElementById("noteTitle").focus();
 }
 
 function closeCreate() {
@@ -9,11 +10,11 @@ function closeCreate() {
 }
 
 //to-do-list dodawanie i usuwanie
-
 let todoList = null;
 let todoForm = null;
 
 todoList = document.querySelector("#todoList");
+lastItem = document.querySelector("#lastItem");
 todoForm = document.querySelector("#todoForm");
 
 
@@ -27,9 +28,7 @@ function addTask() {
 
   //element container bootstrap
   const bootstrapCont = document.createElement("div");
-  bootstrapCont.classList.add("col-lg-4");
-  bootstrapCont.classList.add("col-md-6");
-  bootstrapCont.classList.add("col-sm-12");
+  bootstrapCont.classList.add("col-lg-4", "col-md-6", "col-sm-12");
 
   //card
   const card = document.createElement("div");
@@ -53,14 +52,11 @@ function addTask() {
 
   //cardFooter
   const cardFooter = document.createElement("div");
-  cardFooter.classList.add("card-footer");
-  cardFooter.classList.add("d-flex");
-  cardFooter.classList.add("justify-content-between");
+  cardFooter.classList.add("card-footer", "d-flex", "justify-content-between");
 
   //cardStatus undone
   const cardStatus = document.createElement("button");
-  cardStatus.classList.add("card-icon");
-  cardStatus.classList.add("undone");
+  cardStatus.classList.add("card-icon", "undone");
 
   //data
   const date = new Date();
@@ -83,6 +79,9 @@ function addTask() {
   //join in all
   todoList.appendChild(bootstrapCont);
 
+  //create button is last
+  todoList.appendChild(lastItem);
+
   //reset
   noteDesc.value = "";
   noteTitle.value = "";
@@ -91,7 +90,10 @@ function addTask() {
 todoForm.addEventListener("submit", function (e) {
   e.preventDefault();
 
+  //addTask function
   addTask();
+
+  //refresh ↓
 
   //deleteTaskRefresh
   deleteTask = document.querySelectorAll(".card-close");
@@ -111,7 +113,8 @@ todoForm.addEventListener("submit", function (e) {
         obj.classList.add("done");
 
         obj.parentNode.parentNode.classList.add("finished");
-      } else {
+
+      } else if (obj.classList.contains("done")) {
         obj.classList.remove("done");
         obj.classList.add("undone");
         obj.parentNode.parentNode.classList.remove("finished");
@@ -130,7 +133,6 @@ deleteTask.forEach(obj => {
 
 //changeStatus
 var cardStatus = document.querySelectorAll(".card-icon");
-
 cardStatus.forEach(obj => {
   obj.addEventListener("click", () => {
 
@@ -139,20 +141,28 @@ cardStatus.forEach(obj => {
       obj.classList.add("done");
 
       obj.parentNode.parentNode.classList.add("finished");
-    } else {
+
+    } else if (obj.classList.contains("done")) {
       obj.classList.remove("done");
       obj.classList.add("undone");
-
       obj.parentNode.parentNode.classList.remove("finished");
     }
   })
 });
 
 //click outside div create-card
-$(document).mouseup(function(e) {
-    var container = $("#noteCreate");
+$(document).mouseup(function (e) {
+  var container = $("#noteCreate");
 
-    if (!container.is(e.target) && container.has(e.target).length === 0 && container.is(':visible')) {
-        $("#create-card").hide();
-    }
+  if (!container.is(e.target) && container.has(e.target).length === 0 && container.is(':visible')) {
+    $("#create-card").hide();
+  }
 });
+
+//esc key close create window
+document.onkeydown = function(evt) {
+    evt = evt || window.event;
+    if (evt.keyCode == 27) {
+        createCard.style.display = "none";
+    }
+};

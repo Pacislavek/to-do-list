@@ -25,6 +25,7 @@
 
       <!--CARD DECK-->
       <div class="card-deck d-flex justify-content-start align-items-stretch flex-wrap" id="todoList">
+
         <!--CARD 001-->
         <div class="col-lg-4 col-md-6 col-sm-12">
           <div class="card finished">
@@ -33,7 +34,7 @@
             <div class="card-desc">Zacznij tworzyć to-do-list.</div>
             <div class="card-footer">
               <button class="card-icon done"></button>
-              <div class="card-date">21.03.2011</div>
+              <div class="card-date">21.08.2020</div>
             </div>
           </div>
         </div>
@@ -46,13 +47,13 @@
             <div class="card-desc">Dokończ listę to-do-list.</div>
             <div class="card-footer">
               <button class="card-icon undone"></button>
-              <div class="card-date">31.03.2011</div>
+              <div class="card-date">31.08.2020</div>
             </div>
           </div>
         </div>
 
         <!--ADD CARD-->
-        <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="col-lg-4 col-md-6 col-sm-12" id="lastItem">
           <div class="card add-card" onclick="showCreate()">+</div>
         </div>
       </div>
@@ -81,7 +82,7 @@
               <!-- NOTE DESC -->
               <label class="create-label" for="note-desc">Opis notatki: </label>
               <textarea type="textarea" id="noteDesc" class="create-textarea" required></textarea>
-              <div class="w-100"></div>
+              <!--<div class="w-100"></div>-->
 
               <!-- NOTE DATE-->
               <!--
@@ -91,17 +92,13 @@
               -->
 
               <!-- SUBMIT BUTTON -->
-              <button type="submit" id="note-date" class="create-button">Utwórz</button>
+              <input type="submit" id="note-date" class="create-button" value="Utwórz"/>
             </form>
           </div>
         </div>
       </div>
     </div>
   </section>
-
-
-
-
 
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
